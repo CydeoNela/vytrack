@@ -7,6 +7,7 @@ import com.vytrack.utilities.Driver;
 import org.apache.hc.core5.reactor.Command;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -36,10 +37,13 @@ public class US4_Contracts_Page extends TestBase {
 
         //we locate the fleet button and we click
         WebElement fleetButton = Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[2]"));
-        fleetButton.click();
 
-        // I want to see the options that is giving me when I click the fleet, so I put one second wait time
-        BrowserUtils.sleep(1);
+        //   Hover over the fleet button
+        Actions actions = new Actions(Driver.getDriver());
+
+        actions.moveToElement(fleetButton).perform();
+
+        BrowserUtils.sleep(2);
 
         //we locate the vehicle contract button and I click
         WebElement vehicleContractButton = Driver.getDriver().findElement(By.xpath("//span[.='Vehicle Contracts']"));
@@ -70,15 +74,19 @@ public class US4_Contracts_Page extends TestBase {
 
         BrowserUtils.sleep(8);
         WebElement fleetButton = Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[2]"));
-        fleetButton.click();
 
-        BrowserUtils.sleep(1);
+        Actions actions = new Actions(Driver.getDriver());
+
+        //   Hover over the fleet button
+        actions.moveToElement(fleetButton).perform();
+
+        BrowserUtils.sleep(3);
 
 
         WebElement vehicleContractButton = Driver.getDriver().findElement(By.xpath("//span[.='Vehicle Contracts']"));
         vehicleContractButton.click();
 
-        BrowserUtils.sleep(5);
+        BrowserUtils.sleep(3);
 
 
         WebElement vehicleContractPage = Driver.getDriver().findElement(By.xpath("//h1[@class='oro-subtitle']"));
@@ -97,10 +105,11 @@ public class US4_Contracts_Page extends TestBase {
         WebElement login = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
         login.click();
 
-        BrowserUtils.sleep(8);
+        BrowserUtils.sleep(5);
         WebElement fleetButton = Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[1]"));
         fleetButton.click();
-        BrowserUtils.sleep(1);
+
+        BrowserUtils.sleep(2);
 
         WebElement vehicleContractButton = Driver.getDriver().findElement(By.xpath("//span[.='Vehicle Contracts']"));
         vehicleContractButton.click();
