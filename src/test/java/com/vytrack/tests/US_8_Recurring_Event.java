@@ -104,6 +104,6 @@ public void clear1UncheckedForRepeat() {
 //Test cases #2
 //Description:  users clear the repeat day and see an error message
 //Environment: https://qa2.vytrack.com/user/login
-//Steps:
+//Steps
 
 
