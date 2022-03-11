@@ -27,18 +27,22 @@ public void default1CheckedForRepeat(){
         WebElement calendarEvents = Driver.getDriver().findElement(By.xpath("//span[contains(.,'Calendar Events')]"));
         calendarEvents.click();
 
-        BrowserUtils.sleep(3);
+        //we are using for waiting until loader mask disappearing
+        VytrackUtils.waitTillLoaderMaskDisappear();
+
         //Click the “Create Calendar Event” button
         WebElement creatCalEvent = Driver.getDriver().findElement(By.xpath("//a[@title='Create Calendar event']"));
         creatCalEvent.click();
 
-        BrowserUtils.sleep(3);
+        //we are using for waiting until loader mask disappearing
+        VytrackUtils.waitTillLoaderMaskDisappear();
 
         //Check the Repeat checkbox
         WebElement checkBox = Driver.getDriver().findElement(By.xpath("//input[@data-name='recurrence-repeat']"));
         checkBox.click();
 
-        BrowserUtils.sleep(3);
+        //we are using for waiting until loader mask disappearing
+        VytrackUtils.waitTillLoaderMaskDisappear();
 
 
         WebElement repeat = Driver.getDriver().findElement(By.xpath("(//input[@class='recurrence-subview-control__number'])[1]"));
@@ -72,9 +76,15 @@ public void clear1UncheckedForRepeat() {
         WebElement creatCalEvent = Driver.getDriver().findElement(By.xpath("//a[@title='Create Calendar event']"));
         creatCalEvent.click();
 
+        //we are using for waiting until loader mask disappearing
+        VytrackUtils.waitTillLoaderMaskDisappear();
+
         //Check the Repeat checkbox
         WebElement checkBox = Driver.getDriver().findElement(By.xpath("//input[@data-name='recurrence-repeat']"));
         checkBox.click();
+
+        //we are using for waiting until loader mask disappearing
+        VytrackUtils.waitTillLoaderMaskDisappear();
 
 
         //Clear(delete) the number 1
