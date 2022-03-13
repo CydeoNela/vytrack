@@ -55,6 +55,7 @@ public class VytrackUtils {
         //click login button
         Driver.getDriver().findElement(By.tagName("button")).click();
     }
+
     public static void waitTillLoaderMaskDisappear() {
         try {
             WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
@@ -64,6 +65,8 @@ public class VytrackUtils {
             e.printStackTrace();
         }
     }
+}
+
 
   
 
