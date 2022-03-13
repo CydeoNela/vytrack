@@ -65,9 +65,4 @@ public class VytrackUtils {
         }
     }
 
-    public static void navigate(String tab,String module){
 
-    }
-
-
-}
