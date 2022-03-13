@@ -125,5 +125,6 @@ public class US9_Error_Message extends TestBase {
 
         Assert.assertTrue(ErrMessage2.isDisplayed());
     }
+
 }
 
