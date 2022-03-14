@@ -22,8 +22,8 @@ public class US6_car_info_icons_from_the_Vehicle_page {
     @DataProvider(name = "vytrack")
     public Object[][] firstDataProvider(){
         return new Object[][]{
-                {ConfigurationReader.getProperty("store_manager_username"), ConfigurationReader.getProperty("driver_password")},
-                {ConfigurationReader.getProperty("sales_manager_username"), ConfigurationReader.getProperty("driver_password")},
+                {ConfigurationReader.getProperty("store_manager_username"), ConfigurationReader.getProperty("password")},
+                {ConfigurationReader.getProperty("sales_manager_username"), ConfigurationReader.getProperty("password")},
         };
     }
 
@@ -48,30 +48,31 @@ public class US6_car_info_icons_from_the_Vehicle_page {
         //(//a[@class='dropdown-toggle'])[1]
         //(//td//div//a[.='...'])[4]
 
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
-        js.executeScript("window.scrollBy(750.0)");
-
-        actions.moveToElement(Driver.getDriver().findElement(By.xpath("(//a[@class='dropdown-toggle'])[1]")))
-                .pause(1)
+        actions.moveToElement(Driver.getDriver().findElement(By.xpath("(//td[.='...'])[4]")))
+                .pause(2)
                 .perform();
+
+
 
         BrowserUtils.sleep(3);
 
-        //List<WebElement> elements = Driver.getDriver()
-             //   .findElements(By.xpath("(//td//div//ul[@class='nav nav-pills icons-holder launchers-list'])[3]"));
 
-        /*
-        List<String> expectedTextOptions = new ArrayList<>(Arrays.asList("View", "Edit", "Delete"));
+
+
+
+       /* List<String> expectedTextOptions = new ArrayList<>(Arrays.asList("View", "Edit", "Delete"));
         List<String> actualTextOptions = new ArrayList<>();
 
         for (WebElement each : elements) {
             actualTextOptions.add(each.getText());
         }
-
         Assert.assertEquals(actualTextOptions, expectedTextOptions);
 
-         */
+        */
+
+
+
 
 
 
