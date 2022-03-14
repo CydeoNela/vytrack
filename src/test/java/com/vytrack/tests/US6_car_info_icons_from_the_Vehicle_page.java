@@ -4,15 +4,16 @@ import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.VytrackUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +29,7 @@ public class US6_car_info_icons_from_the_Vehicle_page {
     }
 
     @Test(dataProvider = "vytrack")
-    public void test_car_edited_options(String login, String password){
+    public void test_car_edited_options(String login, String password) throws IOException {
 
         System.out.println(login + " : " + password);
 
@@ -52,6 +53,10 @@ public class US6_car_info_icons_from_the_Vehicle_page {
         actions.moveToElement(Driver.getDriver().findElement(By.xpath("(//td[.='...'])[4]")))
                 .pause(2)
                 .perform();
+
+        File scrFile = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.FILE);
+        // Now you can do whatever you need to do with it, for example copy somewhere
+        FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
 
 
 
