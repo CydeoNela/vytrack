@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 public class US_8_Recurring_Event extends TestBase{
 
 @Test
-public void default1CheckedForRepeat(){
+public void default1CheckedForRepeatStoreManager(){
         //Users are on the homepage
         VytrackUtils.loginAsStoreManger();
 
@@ -54,10 +54,54 @@ public void default1CheckedForRepeat(){
         Assert.assertEquals(actualResult,expectedResult);
         }
 
+        @Test
+        public void default1CheckedForRepeatAsSalesManager() {
+                //Users are on the homepage
+                VytrackUtils.loginAsSalesManager();
+                ;
+
+                //Click the “Calendar Events” under the Activities
+                WebElement Activities = Driver.getDriver().findElement(By.xpath("//span[contains( .,\"Activities\")]"));
+
+                Actions actions = new Actions(Driver.getDriver());
+                actions.moveToElement(Activities).perform();
+
+                WebElement calendarEvents = Driver.getDriver().findElement(By.xpath("//span[contains(.,'Calendar Events')]"));
+                calendarEvents.click();
+
+        //we are using for waiting until loader mask disappearing
+                VytrackUtils.waitTillLoaderMaskDisappear();
+                BrowserUtils.sleep(6);
+
+                //Click the “Create Calendar Event” button
+                WebElement creatCalEvent = Driver.getDriver().findElement(By.xpath("//a[@title='Create Calendar event']"));
+                creatCalEvent.click();
+
+        //we are using for waiting until loader mask disappearing
+                VytrackUtils.waitTillLoaderMaskDisappear();
+
+                //we are using for waiting until loader mask disappearing
+                VytrackUtils.waitTillLoaderMaskDisappear();
+
+                //Check the Repeat checkbox
+                WebElement checkBox = Driver.getDriver().findElement(By.xpath("//input[@data-name='recurrence-repeat']"));
+                checkBox.click();
+
+                BrowserUtils.sleep(3);
 
 
-@Test
-public void clear1UncheckedForRepeat() {
+                WebElement repeat = Driver.getDriver().findElement(By.xpath("(//input[@class='recurrence-subview-control__number'])[1]"));
+                String actualResult = repeat.getAttribute("value");
+                String expectedResult = "1";
+
+                System.out.println("actualResult = " + actualResult);
+                System.out.println("expectedResult = " + expectedResult);
+                Assert.assertEquals(actualResult, expectedResult);
+        }
+
+
+        @Test
+        public void clear1UncheckedForRepeat() {
         //Users are on the homepage
         VytrackUtils.loginAsSalesManager();
 
@@ -101,6 +145,53 @@ public void clear1UncheckedForRepeat() {
         System.out.println("expectedErrormsg = " + expectedErrormsg);
 
         Assert.assertEquals(actualErrorMesssage,expectedErrormsg);
+        }
+
+        @Test
+        public void clear1UncheckedForRepeatAsStoreManager() {
+                //Users are on the homepage
+                VytrackUtils.loginAsStoreManger();
+
+                //Click the “Calendar Events” under the Activities
+                WebElement Activities = Driver.getDriver().findElement(By.xpath("//span[contains( .,\"Activities\")]"));
+
+                Actions actions = new Actions(Driver.getDriver());
+                actions.moveToElement(Activities).perform();
+
+                BrowserUtils.sleep(2);
+                Activities.click();
+                WebElement calendarEvents = Driver.getDriver().findElement(By.xpath("//span[contains(.,'Calendar Events')]"));
+                calendarEvents.click();
+
+                //Click the “Create Calendar Event” button
+                WebElement creatCalEvent = Driver.getDriver().findElement(By.xpath("//a[@title='Create Calendar event']"));
+                creatCalEvent.click();
+
+                //we are using for waiting until loader mask disappearing
+                VytrackUtils.waitTillLoaderMaskDisappear();
+
+                //Check the Repeat checkbox
+                WebElement checkBox = Driver.getDriver().findElement(By.xpath("//input[@data-name='recurrence-repeat']"));
+                checkBox.click();
+
+
+                //we are using for waiting until loader mask disappearing
+                VytrackUtils.waitTillLoaderMaskDisappear();
+
+                //Clear(delete) the number 1
+                WebElement repeat = Driver.getDriver().findElement(By.xpath("(//input[@class='recurrence-subview-control__number'])[1]"));
+                repeat.clear();
+
+
+                //Verify the app displays “This value should not be blank.”
+                WebElement errormsg = Driver.getDriver().findElement(By.xpath("//span[@class='validation-failed']"));
+                String expectedErrormsg = "This value should not be blank.";
+                String actualErrorMesssage = errormsg.getText();
+
+                System.out.println("actualErrorMesssage = " + actualErrorMesssage);
+                System.out.println("expectedErrormsg = " + expectedErrormsg);
+
+                Assert.assertEquals(actualErrorMesssage, expectedErrormsg);
         }
 
         }
