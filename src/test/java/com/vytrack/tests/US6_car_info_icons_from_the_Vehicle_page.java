@@ -29,7 +29,7 @@ public class US6_car_info_icons_from_the_Vehicle_page {
     }
 
     @Test(dataProvider = "vytrack")
-    public void test_car_edited_options(String login, String password) throws IOException {
+    public void test_car_edited_options(String login, String password){
 
         System.out.println(login + " : " + password);
 
@@ -44,11 +44,7 @@ public class US6_car_info_icons_from_the_Vehicle_page {
 
         Driver.getDriver().findElement(By.xpath("//li[2]//ul//li[3]//a//span[.='Vehicles']")).click();
 
-        BrowserUtils.sleep(2);
-
-        //(//a[@class='dropdown-toggle'])[1]
-        //(//td//div//a[.='...'])[4]
-
+        BrowserUtils.sleep(1);
 
         actions.moveToElement(Driver.getDriver().findElement(By.xpath("(//td[.='...'])[4]")))
                 .pause(2)
@@ -56,29 +52,53 @@ public class US6_car_info_icons_from_the_Vehicle_page {
 
         File scrFile = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.FILE);
         // Now you can do whatever you need to do with it, for example copy somewhere
-        FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
-
-
-
-        BrowserUtils.sleep(3);
-
-
-
-
-
-       /* List<String> expectedTextOptions = new ArrayList<>(Arrays.asList("View", "Edit", "Delete"));
-        List<String> actualTextOptions = new ArrayList<>();
-
-        for (WebElement each : elements) {
-            actualTextOptions.add(each.getText());
+        try {
+            FileUtils.copyFile(scrFile, new File("C:\\Users\\musak\\IdeaProjects\\vytrack\\src\\test\\java\\com\\vytrack\\tests\\screenshot.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        Assert.assertEquals(actualTextOptions, expectedTextOptions);
 
-        */
+        BrowserUtils.sleep(1);
+
+    }
+
+    @Test
+    public void test_car_edited_options_DriverLogin(){
+
+        VytrackUtils.loginAsDriver();
+        VytrackUtils.waitTillLoaderMaskDisappear();
+
+        Actions actions = new Actions(Driver.getDriver());
+
+        actions.moveToElement(Driver.getDriver().findElement(By.xpath("//li[1]//span[@class='title title-level-1']")))
+                .pause(1)
+                .perform();
+
+        Driver.getDriver().findElement(By.xpath("//li[1]//ul//li[3]//a//span[.='Vehicles']")).click();
+
+        BrowserUtils.sleep(1);
+
+        // (//td[@class='action-cell grid-cell grid-body-cell'])[4] = doesn't work
+        // (//td//a[.='...'])[5] = doesn't work
+        // (//td//div[@class='dropdown'])[3] = doesn't work
+        // (//td//ul[@class='dropdown-menu dropdown-menu__action-cell launchers-dropdown-menu'])[3] = doesn't work
+        actions.moveToElement(Driver.getDriver().findElement(By.xpath("(//td[.='...'])[4]")))
+                .pause(2)
+                .perform();
+
+        BrowserUtils.sleep(2);
+
+        File scrFile = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.FILE);
+        // Now you can do whatever you need to do with it, for example copy somewhere
+        try {
+            FileUtils.copyFile(scrFile, new File("C:\\Users\\musak\\IdeaProjects\\vytrack\\src\\test\\java\\com\\vytrack\\tests\\screenshotDriver.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
 
-
+        BrowserUtils.sleep(2);
 
 
     }
