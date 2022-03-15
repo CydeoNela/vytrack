@@ -70,10 +70,12 @@ public class US6_car_info_icons_from_the_Vehicle_page {
 
         Actions actions = new Actions(Driver.getDriver());
 
+        VytrackUtils.waitTillLoaderMaskDisappear();
         actions.moveToElement(Driver.getDriver().findElement(By.xpath("//li[1]//span[@class='title title-level-1']")))
                 .pause(1)
                 .perform();
 
+        VytrackUtils.waitTillLoaderMaskDisappear();
         Driver.getDriver().findElement(By.xpath("//li[1]//ul//li[3]//a//span[.='Vehicles']")).click();
 
         BrowserUtils.sleep(1);
@@ -82,6 +84,7 @@ public class US6_car_info_icons_from_the_Vehicle_page {
         // (//td//a[.='...'])[5] = doesn't work
         // (//td//div[@class='dropdown'])[3] = doesn't work
         // (//td//ul[@class='dropdown-menu dropdown-menu__action-cell launchers-dropdown-menu'])[3] = doesn't work
+        VytrackUtils.waitTillLoaderMaskDisappear();
         actions.moveToElement(Driver.getDriver().findElement(By.xpath("(//td[.='...'])[4]")))
                 .pause(2)
                 .perform();
