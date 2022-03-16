@@ -4,10 +4,7 @@ package com.vytrack.utilities;
 In this class only general utility methods that are not related to some specific page.
  */
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 import org.testng.Assert;
 
 import java.util.Set;
@@ -35,23 +32,23 @@ public class BrowserUtils {
         - If condition matches, will break loop.
     Arg3: expectedInTitle to be compared against actualTitle
      */
-    public static void switchWindowAndVerify(WebDriver driver, String expectedInUrl, String expectedInTitle){
+    public static void switchWindowAndVerify(String expectedInUrl, String expectedInTitle){
 
-        Set<String> allWindowsHandles = driver.getWindowHandles();
+        Set<String> allWindowsHandles = Driver.getDriver().getWindowHandles();
 
         for (String each : allWindowsHandles) {
 
-            driver.switchTo().window(each);
+            Driver.getDriver().switchTo().window(each);
 
-            System.out.println("Current URL: " + driver.getCurrentUrl());
+            System.out.println("Current URL: " + Driver.getDriver().getCurrentUrl());
 
-            if (driver.getCurrentUrl().contains(expectedInUrl)){
+            if (Driver.getDriver().getCurrentUrl().contains(expectedInUrl)){
                 break;
             }
         }
 
         //5. Assert:Title contains “expectedInTitle”
-        String actualTitle = driver.getTitle();
+        String actualTitle = Driver.getDriver().getTitle();
         Assert.assertTrue(actualTitle.contains(expectedInTitle));
     }
 
@@ -59,9 +56,10 @@ public class BrowserUtils {
     This method accepts a String "expectedTitle" and Asserts if it is true
      */
 
-    public static void verifyTitle(WebDriver driver ,String expectedTitle){
-        Assert.assertEquals(driver.getTitle(), expectedTitle);
+    public static void verifyTitle(String expectedTitle){
+        Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
     }
+
 
     public static void iframe(WebElement switchToIframe){
         Driver.getDriver().switchTo().frame(switchToIframe);
@@ -75,4 +73,34 @@ public class BrowserUtils {
     public static void getOutOfFrame(){
         Driver.getDriver().switchTo().defaultContent();
     }
+
+
+    //Create scrollToElement(WebElement element) method
+    public static void scrollToElement(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    //Create waitUntilTitleDisplay(String title) method
+    public static void waitUntilTitleDisplay(String title){
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 15);
+
+        //if contains is enough
+        wait.until(ExpectedConditions.titleContains(title));
+        //exact matching
+        //wait.until(ExpectedConditions.titleIs(title));
+    }
+
+    //Create waitUntilInvisibilityOfElement(WebElement element,int timeout) method
+    public static void waitUntilInvisibilityOfElement(WebElement element,int timeout){
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
+        wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    //Create doubleClick(WebElement element) method
+    public static void doubleClick(WebElement element){
+        new Actions(Driver.getDriver()).doubleClick(element).perform();
+    }
+
+
 }
