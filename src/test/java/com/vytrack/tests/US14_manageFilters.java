@@ -72,7 +72,7 @@ public class US14_manageFilters extends TestBase {
 
 
 
-=======
+
    @Test
     public void verify_SalesManagers_see5Filters() {
         //1.User go to homepage

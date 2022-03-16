@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class DescriptionPage_CihadSahin {
+
     public DescriptionPage_CihadSahin(){
 
         PageFactory.initElements(Driver.getDriver(), this);
