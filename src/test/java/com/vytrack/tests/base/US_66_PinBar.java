@@ -118,7 +118,7 @@ public class US_66_PinBar extends TestBase {
             BufferedImage saveImage = ImageIO.read(imageURL);
 
             //writing the image on disk
-            ImageIO.write(saveImage, "jpg", new File(count + "EnesShot.jpg"));
+            ImageIO.write(saveImage, "jpg", new File(".//screenshot/" + count + "EnesShot.jpg"));
             count++;
         }
     }
