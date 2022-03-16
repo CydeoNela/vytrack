@@ -66,6 +66,7 @@ public class BrowserUtils {
     public static void iframe(WebElement switchToIframe){
         Driver.getDriver().switchTo().frame(switchToIframe);
     }
+
     public static void hover(WebElement element) {
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(element).pause(3).perform();
