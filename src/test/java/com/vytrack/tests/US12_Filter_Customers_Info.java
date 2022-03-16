@@ -1,21 +1,20 @@
 package com.vytrack.tests;
 
+
 import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.VytrackUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
-public class US_12_Filter_Customers_Info {
+public class US12_Filter_Customers_Info {
 
 
     @DataProvider(name="filters")
@@ -39,7 +38,7 @@ public class US_12_Filter_Customers_Info {
         VytrackUtils.loginAsStoreManger();
 
         //wait for loader to disappear
-       // VytrackUtils.waitTillLoaderMaskDisappear(); - needs to be added in utils methods -> implicit wait method
+        // VytrackUtils.waitTillLoaderMaskDisappear(); - needs to be added in utils methods -> implicit wait method
 
         //locate Customer tab
         WebElement customers= Driver.getDriver().findElement(By.xpath("(//li[@class='dropdown dropdown-level-1'])[2]"));
@@ -78,6 +77,4 @@ public class US_12_Filter_Customers_Info {
 
 
 
-    }
-
-
+}
