@@ -1,5 +1,6 @@
-package com.vytrack.tests.base;
+package com.vytrack.tests;
 
+import com.vytrack.tests.base.TestBase;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.VytrackUtils;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class US14_manageFilters extends TestBase{
+public class US14_manageFilters extends TestBase {
 
     @Test
     public void verify_StoreManagers_see5Filters() {
@@ -66,6 +67,12 @@ public class US14_manageFilters extends TestBase{
     }
 
 
+
+
+
+
+
+
    @Test
     public void verify_SalesManagers_see5Filters() {
         //1.User go to homepage
@@ -115,6 +122,7 @@ public class US14_manageFilters extends TestBase{
 
 
     }
+
 
 
 }

@@ -16,7 +16,7 @@ public class BrowserUtils {
     for given duration
      */
     public static void sleep(int second){
-            second *=1000;
+        second *=1000;
         try {
             Thread.sleep(second);
         }catch (InterruptedException e ) {
@@ -59,4 +59,5 @@ public class BrowserUtils {
     public static void verifyTitle(WebDriver driver ,String expectedTitle){
         Assert.assertEquals(driver.getTitle(), expectedTitle);
     }
+
 }
